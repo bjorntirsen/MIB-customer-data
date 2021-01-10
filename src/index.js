@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
 import './styles/main.scss'
-import { BrowserRouter } from 'react-router-dom';
+
+import 'bootstrap/dist/js/bootstrap.bundle.js'
 
 ReactDOM.render(
   <React.StrictMode>
