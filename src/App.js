@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { CustomerListContext } from './contexts/CustomerListContext'
 import { UserContext } from './contexts/UserContext'
-import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
-import Navbar from './components/Navbar'
+import HomePage from './pages/HomePage'
 import CustomerDetailPage from './pages/CustomerDetailPage'
+import CustomerUpdatePage from './pages/CustomerUpdatePage'
+import Navbar from './components/Navbar'
+
 
 function App() {
   const [userData, setUserData] = useState(null)
@@ -20,6 +22,8 @@ function App() {
             <Route path="/home">
               <HomePage />
             </Route>
+
+            <Route path="/customers/:id/edit" component={CustomerUpdatePage} />
 
             <Route path="/customers/:id" component={CustomerDetailPage} />
 
