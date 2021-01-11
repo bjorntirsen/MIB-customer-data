@@ -4,14 +4,10 @@ import CustomerListItem from '../components/CustomerListItem'
 
 export default function HomePage() {
     const { customerList, setCustomerList } = useContext(CustomerListContext)
+    const url = "https://frebi.willandskill.eu/api/v1/customers/"
+    const token = localStorage.getItem("WEBB20")
 
     useEffect(() => {
-        getCustomerList()
-    }, [])
-
-    function getCustomerList() {
-        const url = "https://frebi.willandskill.eu/api/v1/customers/"
-        const token = localStorage.getItem("WEBB20")
         fetch(url, {
             headers: {
                 "Content-Type": "application/json",
@@ -20,7 +16,7 @@ export default function HomePage() {
         })
         .then(res => res.json())
         .then(data => setCustomerList(data.results))
-    }
+    }, [setCustomerList, token])
 
     return (
         <div className="container text-center">

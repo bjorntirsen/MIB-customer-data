@@ -1,27 +1,37 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
+import { useHistory, Link } from 'react-router-dom'
 import { CustomerListContext } from '../contexts/CustomerListContext'
 
 export default function CustomerDetailPage(props) {
-    const { customerList, setCustomerList } = useContext(CustomerListContext)
+    const { customerList } = useContext(CustomerListContext)
     const customerId = props.match.params.id
     const customer = customerList.find(obj => {
         return obj.id == customerId
     })
+    const history = useHistory()
 
-    useEffect(() => {
-        console.log(customerList)
-    }, [])
+    function deleteCustomer() {
+        const url = `https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
+        const token = localStorage.getItem("WEBB20")
+        fetch(url, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(() => history.push("/home"))
+    }
 
     return (
         <>
-            <div>
-                <h1>Customer Details</h1>
-                <p>{customerId}</p>
+            <div className="text-center">
+                <h1>Customer Details:</h1>
             </div>
             {customer 
             ? (
                 <div className="text-center">
-                    <h1>{customer.name}</h1>
+                    <h2>{customer.name}</h2>
                     <table className="table table-dark">
                         <tbody>
                             <tr>
@@ -51,12 +61,12 @@ export default function CustomerDetailPage(props) {
                             <tr>
                                 <td>Website: {customer.website}</td>
                                 <td>
-                                    <a href={customer.website} target="_blank">{customer.website}</a>
+                                    <a href={customer.website} target="_blank" rel="noreferrer">{customer.website}</a>
                                 </td>
                             </tr>
                         </tbody>
-                        
                     </table>
+                    <button onClick={deleteCustomer}>Delete Customer</button>
                 </div>
             )
             :
