@@ -34,8 +34,13 @@ export default function CustomerDetailPage(props) {
                         {customer 
                         ? (
                             <div className="text-center">
-                                <h2>{customer.name}</h2>
                                 <table className="table table-dark">
+                                    <thead>
+                                        <tr>
+                                            <td>Name: </td>
+                                            <td>{customer.name}</td>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <tr>
                                             <td>Org. nr: </td>

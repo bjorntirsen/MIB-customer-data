@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+
 export default function LoginPage() {
     const [formData, setFormData] = useState({
         email: "Bjorn.Tirsen@yh.nackademin.se",
         password: "javascriptoramverk"
     })
-
     const history = useHistory()
 
     function handleOnChange(e) {
@@ -15,7 +15,6 @@ export default function LoginPage() {
     }
 
     function handleOnSubmit(e) {
-        const body = document.querySelector("body")
         e.preventDefault()
         const url = "https://frebi.willandskill.eu/api-token-auth/"
         const payload = {
@@ -31,9 +30,7 @@ export default function LoginPage() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data.token)
             localStorage.setItem("WEBB20", data.token)
-            body.classList.remove("modal-open")
             history.push("/home")
         })
     }

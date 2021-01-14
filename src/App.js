@@ -8,6 +8,7 @@ import CustomerDetailPage from './pages/CustomerDetailPage'
 import CustomerUpdatePage from './pages/CustomerUpdatePage'
 import Navbar from './components/Navbar'
 import CustomerCreatePage from './pages/CustomerCreatePage'
+import UserDetails from './components/UserDetails'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <UserContext.Provider value={{userData, setUserData}} >
         <CustomerListContext.Provider value={{customerList, setCustomerList}} >
           <Navbar />
+          <UserDetails />
           <Switch>
             <Route path="/home">
               <HomePage />
