@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { StyledButtonLarge } from '../components/StyledButtonLarge'
 
 
 export default function LoginPage() {
@@ -52,14 +53,14 @@ export default function LoginPage() {
                         <input type="password" autoComplete="current-password" className="form-control" id="inputPassword" name="password" value={formData.password}onChange={handleOnChange} />
                     </div>
                     <div className="d-flex justify-content-center">
-                        <div className="m-2 align-self-end">
-                            <button type="submit" className="btn btn-primary btn-lg">Sign In</button>
+                        <div className="align-self-end">
+                            <StyledButtonLarge type="submit" primary>Sign In</StyledButtonLarge>
                         </div>
-                        <div className="m-2 align-self-end">
+                        <div className="align-self-end">
                             <small id="emailHelp" className="form-text text-muted">Don't have an account?</small>
-                            <button type="button" className="btn btn-secondary btn-lg" data-toggle="modal" data-target="#sign-up">
+                            <StyledButtonLarge type="button" data-toggle="modal" data-target="#sign-up">
                             Sign Up
-                            </button>
+                            </StyledButtonLarge>
                         </div>
                     </div>
                 </form>

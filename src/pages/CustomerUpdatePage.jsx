@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import InputField from '../components/InputField'
 import { CustomerListContext } from '../contexts/CustomerListContext'
+import { StyledButton } from '../components/StyledButton'
+import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerUpdatePage(props) {
     const { customerList } = useContext(CustomerListContext)
@@ -101,8 +103,8 @@ export default function CustomerUpdatePage(props) {
                                 />
                             </tbody>
                         </table>
-                        <button type="submit">Update Customer</button>
-                        <Link to={`/customers/${customerId}/`}>Cancel</Link>
+                        <StyledButton type="submit" primary>Update Customer</StyledButton>
+                        <StyledLink to={`/customers/${customerId}/`}>Cancel</StyledLink>
                     </form>
                 </div>
             )

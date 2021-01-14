@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import InputField from '../components/InputField'
+import { StyledButton } from '../components/StyledButton'
+import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerCreatePage(props) {
     const [customerData, setCustomerData] = useState({})
@@ -20,6 +22,13 @@ export default function CustomerCreatePage(props) {
         })
         .then(res => res.json())
         .then(() => history.push("/home"))
+    }
+
+    function validateVatNr(e) {
+        const name = e.target.name
+        const value = e.target.value
+        const newObj = {...customerData, [name]: value}
+        setCustomerData(newObj)
     }
 
     return (
@@ -93,8 +102,8 @@ export default function CustomerCreatePage(props) {
                             />
                         </tbody>
                     </table>
-                    <button type="submit">Create Customer</button>
-                    <Link to={"/home"}>Cancel</Link>
+                    <StyledButton type="submit" primary>Create Customer</StyledButton>
+                    <StyledLink to={"/home"}>Cancel</StyledLink>
                 </form>
             </div>
         </>

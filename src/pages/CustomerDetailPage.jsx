@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { CustomerListContext } from '../contexts/CustomerListContext'
+import { StyledButton } from '../components/StyledButton'
+import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerDetailPage(props) {
     const { customerList } = useContext(CustomerListContext)
@@ -74,9 +76,9 @@ export default function CustomerDetailPage(props) {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <Link to={`/customers/${customerId}/edit/`}>Edit Customer</Link>
-                                <button onClick={deleteCustomer}>Delete Customer</button>
-                                <Link to={"/home"}>Back to List</Link>
+                                <StyledLink to={`/customers/${customerId}/edit/`} primary>Edit Customer</StyledLink>
+                                <StyledButton onClick={deleteCustomer}>Delete Customer</StyledButton>
+                                <StyledLink to={"/home"}>Back to List</StyledLink>
                             </div>
                         )
                         :

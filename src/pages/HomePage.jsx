@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { CustomerListContext } from '../contexts/CustomerListContext'
 import { UserContext } from '../contexts/UserContext'
 import CustomerListItem from '../components/CustomerListItem'
+import { StyledLink } from '../components/StyledLink'
 
 export default function HomePage() {
     const { customerList, setCustomerList } = useContext(CustomerListContext)
@@ -58,7 +58,7 @@ export default function HomePage() {
                 })}
                 </div>
             </div>
-            <Link to="/customers/create" >Create New Customer</Link>
+            <StyledLink to="/customers/create" primary>Create New Customer</StyledLink>
         </div>
     )
 }
