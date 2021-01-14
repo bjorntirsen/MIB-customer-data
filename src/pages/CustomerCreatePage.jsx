@@ -1,46 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { CustomerListContext } from '../contexts/CustomerListContext'
+import InputField from '../components/InputField'
 
 export default function CustomerCreatePage(props) {
-    const { customerList } = useContext(CustomerListContext)
-    const customerId = props.match.params.id
-    const [customer, setCustomer] = useState(
-        customerList.find(obj => {
-            return obj.id == customerId
-    }))
+    const [customerData, setCustomerData] = useState({})
     const history = useHistory()
 
-    function renderField(name, label, type) {
-        return (
-            <tr>
-                <td>{label}</td>
-                <td>
-                    <input 
-                        type={type || "text"} 
-                        name={name}
-                        value={customer[name]}
-                        onChange={handleOnChange}
-                    />
-                </td>
-            </tr>
-        )
-    }
-
-    function handleOnChange(e) {
-        const name = e.target.name
-        const value = e.target.value
-        const newObj = {...customer, [name]: value}
-        setCustomer(newObj)
-    }
-
-    function updateCustomer(e) {
+    function createCustomer(e) {
         e.preventDefault()
-        const url = `https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
+        const url = "https://frebi.willandskill.eu/api/v1/customers/"
         const token = localStorage.getItem("WEBB20")
         fetch(url, {
-            method: "PUT",
-            body: JSON.stringify(customer),
+            method: "POST",
+            body: JSON.stringify(customerData),
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -53,33 +25,78 @@ export default function CustomerCreatePage(props) {
     return (
         <>
             <div className="text-center">
-                <h1>Update Customer:</h1>
+                <h1>Create Customer:</h1>
             </div>
-            {customer 
-            ? (
-                <div className="text-center">
-                    <form onSubmit={updateCustomer}>
-                        <table className="table table-dark">
-                            <tbody>
-                                {renderField("name", "Customer Name")}
-                                {renderField("email", "Customer Email", "email")}
-                                {renderField("organisationNr", "Organisation Number")}
-                                {renderField("paymentTerm", "Payment Term", "number")}
-                                {renderField("phoneNumber", "Phone Number", "tel")}
-                                {renderField("reference", "Reference")}
-                                {renderField("vatNr", "Vat Number")}
-                                {renderField("website", "Website", "url")}
-                            </tbody>
-                        </table>
-                        <button type="submit">Update Customer</button>
-                        <Link to={`/customers/${customerId}/`}>Cancel</Link>
-                    </form>
-                </div>
-            )
-            :
-            (
-                <p>Loading...</p>
-            )}
+            <div className="text-center">
+                <form onSubmit={createCustomer}>
+                    <table className="table table-dark">
+                        <tbody>
+                            <InputField 
+                                name="name" 
+                                label="Customer Name"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.name}
+                            />
+                            <InputField 
+                                name="email" 
+                                label="Customer Email"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.email}
+                                type="email"
+                            />
+                            <InputField 
+                                name="organisationNr" 
+                                label="Organisation Number"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.organisationNr}
+                            />
+                            <InputField 
+                                name="paymentTerm" 
+                                label="Payment Term"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.paymentTerm}
+                                type="number"
+                            />
+                            <InputField 
+                                name="phoneNumber" 
+                                label="Phone Number"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.phoneNumber}
+                                type="tel"
+                            />
+                            <InputField 
+                                name="reference" 
+                                label="Reference"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.reference}
+                            />
+                            <InputField 
+                                name="vatNr" 
+                                label="Vat Number"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.vatNr}
+                            />
+                            <InputField 
+                                name="website" 
+                                label="Website"
+                                setCustomer={setCustomerData}
+                                customer={customerData}
+                                value={customerData.website}
+                                type="url"
+                            />
+                        </tbody>
+                    </table>
+                    <button type="submit">Create Customer</button>
+                    <Link to={"/home"}>Cancel</Link>
+                </form>
+            </div>
         </>
     )
 }

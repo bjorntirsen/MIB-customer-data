@@ -25,55 +25,62 @@ export default function CustomerDetailPage(props) {
 
     return (
         <>
-            <div className="text-center">
-                <h1>Customer Details:</h1>
-            </div>
-            {customer 
-            ? (
-                <div className="text-center">
-                    <h2>{customer.name}</h2>
-                    <table className="table table-dark">
-                        <tbody>
-                            <tr>
-                                <td>Org. nr: </td>
-                                <td>{customer.organisationNr}</td>
-                            </tr>
-                            <tr>
-                                <td>Payterm: </td>
-                                <td>{customer.paymentTerm}</td>
-                            </tr>
-                            <tr>
-                                <td>Phone: </td>
-                                <td>{customer.phoneNumber}</td>
-                            </tr>
-                            <tr>
-                                <td>Ref: </td>
-                                <td>{customer.reference}</td>
-                            </tr>
-                            <tr>
-                                <td>VAT: </td>
-                                <td>{customer.vatNr}</td>
-                            </tr>
-                            <tr>
-                                <td>Email: </td>
-                                <td><a href={`mailto:${customer.email}`}>{customer.email}</a></td>
-                            </tr>
-                            <tr>
-                                <td>Website: {customer.website}</td>
-                                <td>
-                                    <a href={customer.website} target="_blank" rel="noreferrer">{customer.website}</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button onClick={deleteCustomer}>Delete Customer</button>
-                    <Link to={`/customers/${customerId}/edit/`}>Edit Customer</Link>
+            <div className="container">
+                <div className="row">
+                    <h1 className="mx-auto">Customer Details:</h1>
                 </div>
-            )
-            :
-            (
-                <p>Loading...</p>
-            )}
+                <div className="row">
+                    <div className="col">
+                        {customer 
+                        ? (
+                            <div className="text-center">
+                                <h2>{customer.name}</h2>
+                                <table className="table table-dark">
+                                    <tbody>
+                                        <tr>
+                                            <td>Org. nr: </td>
+                                            <td>{customer.organisationNr}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Payterm: </td>
+                                            <td>{customer.paymentTerm}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone: </td>
+                                            <td>{customer.phoneNumber}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ref: </td>
+                                            <td>{customer.reference}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>VAT: </td>
+                                            <td>{customer.vatNr}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email: </td>
+                                            <td><a href={`mailto:${customer.email}`}>{customer.email}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Website: </td>
+                                            <td>
+                                                <a href={customer.website} target="_blank" rel="noreferrer">{customer.website}</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <Link to={`/customers/${customerId}/edit/`}>Edit Customer</Link>
+                                <button onClick={deleteCustomer}>Delete Customer</button>
+                                <Link to={"/home"}>Back to List</Link>
+                            </div>
+                        )
+                        :
+                        (
+                            <p>Loading...</p>
+                        )}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

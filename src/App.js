@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage'
 import CustomerDetailPage from './pages/CustomerDetailPage'
 import CustomerUpdatePage from './pages/CustomerUpdatePage'
 import Navbar from './components/Navbar'
+import CustomerCreatePage from './pages/CustomerCreatePage'
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
           <Switch>
             <Route path="/home">
               <HomePage />
+            </Route>
+
+            <Route path="/customers/create">
+              <CustomerCreatePage />
             </Route>
 
             <Route path="/customers/:id/edit" component={CustomerUpdatePage} />

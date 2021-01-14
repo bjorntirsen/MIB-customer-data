@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { CustomerListContext } from '../contexts/CustomerListContext'
 import CustomerListItem from '../components/CustomerListItem'
 
@@ -36,7 +37,7 @@ export default function HomePage() {
                 })}
                 </div>
             </div>
-            
+            <Link to="/customers/create" >Create New Customer</Link>
         </div>
     )
 }
