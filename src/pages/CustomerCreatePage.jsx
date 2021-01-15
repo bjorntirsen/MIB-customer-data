@@ -6,6 +6,7 @@ import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerCreatePage(props) {
     const [customerData, setCustomerData] = useState({})
+    const [vatHints, setVatHints] = useState("")
     const history = useHistory()
 
     function createCustomer(e) {
@@ -27,8 +28,18 @@ export default function CustomerCreatePage(props) {
     function validateVatNr(e) {
         const name = e.target.name
         const value = e.target.value
+        const hints = ""
+        const hint1 = 'A vat number must start with the letters "SE". '
+        const hint2 = 'A vat number must be 12 digits long. '
+        const hint3 = 'The last 10 digits must be numbers. '
+        const firstTwo = value.substring(0, 2)
+        const correctFirstTwo = "se"
         const newObj = {...customerData, [name]: value}
         setCustomerData(newObj)
+        if (firstTwo.toLowerCase() !== correctFirstTwo.toLowerCase()) hints.concat(hint1)
+        else if (value.length !== 12) hints.concat(hint2)
+        else if (/^\d+$/.test(value.substring(2)) === false) hints.concat(hint3)
+        setVatHints(hints)
     }
 
     return (
@@ -91,7 +102,11 @@ export default function CustomerCreatePage(props) {
                                 setCustomer={setCustomerData}
                                 customer={customerData}
                                 value={customerData.vatNr}
+                                onChange={validateVatNr}
                             />
+                            {(vatHints !== "") &&
+                                <tr>{vatHints}</tr>
+                            }
                             <InputField 
                                 name="website" 
                                 label="Website"

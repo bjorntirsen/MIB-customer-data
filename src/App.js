@@ -13,12 +13,43 @@ import UserDetails from './components/UserDetails'
 
 function App() {
   const [userData, setUserData] = useState(null)
-  const [customerList, setCustomerList] = useState([])
+  const [customerList, setCustomerList] = useState(null)
+  const token = localStorage.getItem("WEBB20")
+
+  function fetchCustomerList() {
+    const url = "https://frebi.willandskill.eu/api/v1/customers/"
+    fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      setCustomerList(data.results)
+    })
+    .catch(err => console.error(err))
+  }
+
+  function fetchUserData() {
+    const url = "https://frebi.willandskill.eu/api/v1/me/"
+    fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.id) setUserData(data)
+    })
+    .catch(err => console.error(err))
+  }
 
   return (
     <>
-      <UserContext.Provider value={{userData, setUserData}} >
-        <CustomerListContext.Provider value={{customerList, setCustomerList}} >
+      <UserContext.Provider value={{userData, setUserData, fetchUserData}} >
+        <CustomerListContext.Provider value={{customerList, setCustomerList, fetchCustomerList}} >
           <Navbar />
           <UserDetails />
           <Switch>

@@ -76,7 +76,7 @@ export default function CustomerDetailPage(props) {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <StyledLink to={`/customers/${customerId}/edit/`} primary>Edit Customer</StyledLink>
+                                <StyledLink to={`/customers/${customerId}/edit/`} primary="true">Edit Customer</StyledLink>
                                 <StyledButton onClick={deleteCustomer}>Delete Customer</StyledButton>
                                 <StyledLink to={"/home"}>Back to List</StyledLink>
                             </div>

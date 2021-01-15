@@ -32,8 +32,10 @@ export default function LoginPage() {
         .then(res => res.json())
         .then(data => {
             localStorage.setItem("WEBB20", data.token)
-            history.push("/home")
+            if (data.token) history.push("/home")
+            else window.alert("Invalid email or password. Please try again.")
         })
+        .catch(err => console.error(err))
     }
 
     return (

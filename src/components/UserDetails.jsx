@@ -1,10 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 
 export default function UserDetails() {
-    const { userData, setUserData } = useContext(UserContext)
+    const { userData, setUserData, fetchUserData } = useContext(UserContext)
     const history = useHistory()
+
+    useEffect(() => {
+        if (!userData && (localStorage.getItem("WEBB20") !== null)) {
+            fetchUserData()
+        }
+    }, [userData, fetchUserData])
 
     function logOut() {
         localStorage.removeItem('WEBB20')
@@ -14,7 +20,7 @@ export default function UserDetails() {
 
     return (
         <div className="navbar navbar-dark bg-dark">
-            {userData
+            {(userData !== null)
             ? (
                 <>
                     <span className="text-light">Logged in as: </span>

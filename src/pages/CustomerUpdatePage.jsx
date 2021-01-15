@@ -6,7 +6,7 @@ import { StyledButton } from '../components/StyledButton'
 import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerUpdatePage(props) {
-    const { customerList } = useContext(CustomerListContext)
+    const { customerList, fetchCustomerList } = useContext(CustomerListContext)
     const customerId = props.match.params.id
     const [customer, setCustomer] = useState(
         customerList.find(obj => {
@@ -27,7 +27,9 @@ export default function CustomerUpdatePage(props) {
             }
         })
         .then(res => res.json())
+        .then(() => fetchCustomerList())
         .then(() => history.push("/home"))
+        .catch(err => console.error(err))
     }
 
     return (

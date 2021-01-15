@@ -5,21 +5,14 @@ import CustomerListItem from '../components/CustomerListItem'
 import { StyledLink } from '../components/StyledLink'
 
 export default function HomePage() {
-    const { customerList, setCustomerList } = useContext(CustomerListContext)
-    const url = "https://frebi.willandskill.eu/api/v1/customers/"
-    const token = localStorage.getItem("WEBB20")
+    const { customerList, fetchCustomerList } = useContext(CustomerListContext)
     const { setUserData } = useContext(UserContext)
 
     useEffect(() => {
-        fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-        .then(res => res.json())
-        .then(data => setCustomerList(data.results))
-    }, [setCustomerList, token])
+        if (!customerList) {
+            fetchCustomerList()
+        }
+    }, [customerList, fetchCustomerList])
 
     useEffect( () => {
         if (localStorage.getItem("WEBB20") !== null) {
@@ -33,7 +26,6 @@ export default function HomePage() {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setUserData(data)
             })
             .catch(err => console.error(err))
@@ -48,17 +40,19 @@ export default function HomePage() {
                     <h2>Customers:</h2>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                {customerList.map(item => {
-                    return <CustomerListItem 
-                        key={item.id} 
-                        customerData={item} 
-                    />
-                })}
+            {customerList &&
+                <div className="row">
+                    <div className="col">
+                    {customerList.map(item => {
+                        return <CustomerListItem 
+                            key={item.id} 
+                            customerData={item} 
+                        />
+                    })}
+                    </div>
                 </div>
-            </div>
-            <StyledLink to="/customers/create" primary>Create New Customer</StyledLink>
+            }
+            <StyledLink to="/customers/create" primary="true">Create New Customer</StyledLink>
         </div>
     )
 }
