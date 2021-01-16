@@ -8,7 +8,6 @@ import CustomerDetailPage from './pages/CustomerDetailPage'
 import CustomerUpdatePage from './pages/CustomerUpdatePage'
 import Navbar from './components/Navbar'
 import CustomerCreatePage from './pages/CustomerCreatePage'
-import UserDetails from './components/UserDetails'
 
 
 function App() {
@@ -52,7 +51,6 @@ function App() {
       <UserContext.Provider value={{userData, setUserData, fetchUserData}} >
         <CustomerListContext.Provider value={{customerList, setCustomerList, fetchCustomerList}} >
           <Navbar />
-          <UserDetails />
           <div className="container-md text-center">
             <Switch>
               <Route path="/home">
