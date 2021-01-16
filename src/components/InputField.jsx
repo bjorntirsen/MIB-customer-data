@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InputField({name, label, setCustomer, customer, value, type, onChange}) {
+export default function InputField({name, label, setCustomer, customer, value, type}) {
     function handleOnChange(e) {
         const name = e.target.name
         const value = e.target.value
@@ -16,7 +16,7 @@ export default function InputField({name, label, setCustomer, customer, value, t
                     type={type || "text"} 
                     name={name}
                     value={value || ""}
-                    onChange={onChange || handleOnChange}
+                    onChange={handleOnChange}
                 />
             </td>
         </tr>

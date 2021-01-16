@@ -39,7 +39,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="text-center container">
+        <>
             <h1>
             Welcome to MIB Customer Data! <br/> My assistant In Black
             </h1>
@@ -67,7 +67,7 @@ export default function LoginPage() {
                     </div>
                 </form>
             </div>
-            {/* Modals. Refactor into components later */}
+            {/* Modal. Refactor into component later */}
             <div className="modal fade" id="sign-up" tabIndex="-1" aria-labelledby="sign-up-label" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -85,6 +85,6 @@ export default function LoginPage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

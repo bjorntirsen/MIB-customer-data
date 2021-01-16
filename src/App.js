@@ -14,10 +14,10 @@ import UserDetails from './components/UserDetails'
 function App() {
   const [userData, setUserData] = useState(null)
   const [customerList, setCustomerList] = useState(null)
-  const token = localStorage.getItem("WEBB20")
 
   function fetchCustomerList() {
     const url = "https://frebi.willandskill.eu/api/v1/customers/"
+    const token = localStorage.getItem("WEBB20")
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -33,6 +33,7 @@ function App() {
 
   function fetchUserData() {
     const url = "https://frebi.willandskill.eu/api/v1/me/"
+    const token = localStorage.getItem("WEBB20")
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -52,23 +53,25 @@ function App() {
         <CustomerListContext.Provider value={{customerList, setCustomerList, fetchCustomerList}} >
           <Navbar />
           <UserDetails />
-          <Switch>
-            <Route path="/home">
-              <HomePage />
-            </Route>
+          <div className="container-md text-center">
+            <Switch>
+              <Route path="/home">
+                <HomePage />
+              </Route>
 
-            <Route path="/customers/create">
-              <CustomerCreatePage />
-            </Route>
+              <Route path="/customers/create">
+                <CustomerCreatePage />
+              </Route>
 
-            <Route path="/customers/:id/edit" component={CustomerUpdatePage} />
+              <Route path="/customers/:id/edit" component={CustomerUpdatePage} />
 
-            <Route path="/customers/:id" component={CustomerDetailPage} />
+              <Route path="/customers/:id" component={CustomerDetailPage} />
 
-            <Route path="/">
-              <LoginPage />
-            </Route>
-          </Switch>
+              <Route path="/">
+                <LoginPage />
+              </Route>
+            </Switch>
+          </div>
         </CustomerListContext.Provider>
       </UserContext.Provider>
     </>
