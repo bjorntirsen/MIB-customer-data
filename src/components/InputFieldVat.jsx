@@ -7,7 +7,8 @@ export default function InputFieldVat({setCustomer, customer, value, vatHints, s
             setVatHints("Please enter a valid VAT number above.")
         }
         else validateVat(value)
-    }, [value, setVatHints])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     function handleOnChange(e) {
         const name = e.target.name

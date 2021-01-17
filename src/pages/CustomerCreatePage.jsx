@@ -35,7 +35,7 @@ export default function CustomerCreatePage() {
         <>
             <h1>Create Customer:</h1>
             <form onSubmit={createCustomer}>
-                <table className="table table-dark">
+                <table className="table table-dark table-max-width">
                     <tbody>
                         <InputField 
                             name="name" 

@@ -54,7 +54,7 @@ export default function CustomerUpdatePage(props) {
             {customer 
             ? (
                 <form onSubmit={updateCustomer}>
-                    <table className="table table-dark">
+                    <table className="table table-dark table-max-width">
                         <tbody>
                             <InputField 
                                 name="name" 

@@ -45,7 +45,7 @@ export default function CustomerDetailPage(props) {
             <h1>Customer Details:</h1>
             {customer ? (
                 <>
-                    <table className="table table-dark">
+                    <table className="table table-dark table-max-width">
                         <thead>
                             <tr>
                                 <td>Name: </td>
