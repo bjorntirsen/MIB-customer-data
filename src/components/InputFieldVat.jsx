@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function InputFieldVat({setCustomer, customer, value, vatHints, setVatHints, setDisabled}) {
+
+    useEffect(() => {
+        if (value === null) {
+            setVatHints("Please enter a valid VAT number above.")
+        }
+    }, [value, setVatHints])
 
     function handleOnChange(e) {
         const name = e.target.name
