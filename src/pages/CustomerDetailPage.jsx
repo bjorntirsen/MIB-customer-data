@@ -35,7 +35,6 @@ export default function CustomerDetailPage(props) {
                 "Authorization": `Bearer ${token}`
             }
         })
-        .then(res => res.json())
         .then(() => fetchCustomerList())
         .then(() => history.push("/customers"))
         .catch(err => console.error(err))

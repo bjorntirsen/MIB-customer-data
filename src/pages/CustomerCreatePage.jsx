@@ -9,7 +9,7 @@ import { StyledLink } from '../components/StyledLink'
 export default function CustomerCreatePage() {
     const { fetchCustomerList } = useContext(CustomerListContext)
     const [customerData, setCustomerData] = useState({})
-    const [vatHints, setVatHints] = useState("Please enter a valid VAT number above.")
+    const [vatHints, setVatHints] = useState("")
     const [disabled, setDisabled] = useState(true)
     const history = useHistory()
 

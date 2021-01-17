@@ -34,7 +34,7 @@ export default function Navbar() {
                         <Link className="nav-link" to="/">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/home">Customer List</Link>
+                        <Link className="nav-link" to="/customers">Customer List</Link>
                     </li>
                 </ul>
                 <div className="form-inline my-2 my-lg-0">

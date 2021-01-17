@@ -3,10 +3,10 @@ import React, { useEffect } from 'react'
 export default function InputFieldVat({setCustomer, customer, value, vatHints, setVatHints, setDisabled}) {
 
     useEffect(() => {
-        if (value === null) {
+        if (!value) {
             setVatHints("Please enter a valid VAT number above.")
         }
-        else if (value !== null) validateVat(value)
+        else validateVat(value)
     }, [value, setVatHints])
 
     function handleOnChange(e) {
