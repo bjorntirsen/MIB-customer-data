@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-export default function InputFieldVat({setCustomer, customer, value, vatHints, setVatHints, setDisabled}) {
+export default function InputFieldVat({setCustomer, customer, value, vatHints, setVatHints}) {
 
     useEffect(() => {
         if (!value) {
@@ -29,8 +29,6 @@ export default function InputFieldVat({setCustomer, customer, value, vatHints, s
         if (fieldValue.length !== 12) hints = hints.concat(hint2)
         if (/^\d+$/.test(fieldValue.substring(2)) === false) hints = hints.concat(hint3)
         setVatHints(hints)
-        if (hints === "") setDisabled(false)
-        if (hints !== "") setDisabled(true)
     }
     
     return (

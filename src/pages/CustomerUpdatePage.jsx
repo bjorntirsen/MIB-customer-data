@@ -5,6 +5,7 @@ import InputFieldVat from '../components/InputFieldVat'
 import { CustomerListContext } from '../contexts/CustomerListContext'
 import { StyledButton } from '../components/StyledButton'
 import { StyledLink } from '../components/StyledLink'
+import InputFieldPayterm from '../components/InputFieldPayterm'
 
 export default function CustomerUpdatePage(props) {
     const { customerList, fetchCustomerList } = useContext(CustomerListContext)
@@ -20,6 +21,11 @@ export default function CustomerUpdatePage(props) {
             fetchCustomerList()
         }
     }, [customerList, fetchCustomerList, token])
+
+    useEffect(() => {
+        if (vatHints === "") setDisabled(false)
+        else setDisabled(true)
+    }, [vatHints])
 
     useEffect(() => {
         if (customerList) {
@@ -78,13 +84,9 @@ export default function CustomerUpdatePage(props) {
                                 customer={customer}
                                 value={customer.organisationNr} 
                             />
-                            <InputField 
-                                name="paymentTerm" 
-                                label="Payment Term"
+                            <InputFieldPayterm 
                                 setCustomer={setCustomer}
                                 customer={customer}
-                                value={customer.paymentTerm}
-                                type="number"
                             />
                             <InputField 
                                 name="phoneNumber" 
@@ -107,7 +109,6 @@ export default function CustomerUpdatePage(props) {
                                 value={customer.vatNr}
                                 vatHints={vatHints}
                                 setVatHints={setVatHints}
-                                setDisabled={setDisabled}
                             />
                             <InputField 
                                 name="website" 

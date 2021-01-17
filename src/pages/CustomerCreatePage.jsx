@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import InputField from '../components/InputField'
 import InputFieldVat from '../components/InputFieldVat'
 import { CustomerListContext } from '../contexts/CustomerListContext'
 import { StyledButton } from '../components/StyledButton'
 import { StyledLink } from '../components/StyledLink'
+import InputFieldPayterm from '../components/InputFieldPayterm'
 
 export default function CustomerCreatePage() {
     const { fetchCustomerList } = useContext(CustomerListContext)
@@ -12,6 +13,11 @@ export default function CustomerCreatePage() {
     const [vatHints, setVatHints] = useState("")
     const [disabled, setDisabled] = useState(true)
     const history = useHistory()
+
+    useEffect(() => {
+        if (vatHints === "") setDisabled(false)
+        else setDisabled(true)
+    }, [vatHints])
 
     function createCustomer(e) {
         e.preventDefault()
@@ -59,13 +65,9 @@ export default function CustomerCreatePage() {
                             customer={customerData}
                             value={customerData.organisationNr}
                         />
-                        <InputField 
-                            name="paymentTerm" 
-                            label="Payment Term"
+                        <InputFieldPayterm 
                             setCustomer={setCustomerData}
                             customer={customerData}
-                            value={customerData.paymentTerm}
-                            type="number"
                         />
                         <InputField 
                             name="phoneNumber" 
@@ -88,7 +90,6 @@ export default function CustomerCreatePage() {
                             value={customerData.vatNr}
                             vatHints={vatHints}
                             setVatHints={setVatHints}
-                            setDisabled={setDisabled}
                         />
                         <InputField 
                             name="website" 
