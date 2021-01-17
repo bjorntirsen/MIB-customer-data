@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import InputField from '../components/InputField'
 import InputFieldVat from '../components/InputFieldVat'
@@ -8,14 +8,27 @@ import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerUpdatePage(props) {
     const { customerList, fetchCustomerList } = useContext(CustomerListContext)
+    const token = localStorage.getItem("WEBB20")
     const customerId = props.match.params.id
-    const [customer, setCustomer] = useState(
-        customerList.find(obj => {
-            return obj.id === Number(customerId)
-    }))
+    const [customer, setCustomer] = useState(null)
     const [vatHints, setVatHints] = useState("Please enter a valid VAT number above.")
     const [disabled, setDisabled] = useState(true)
     const history = useHistory()
+
+    useEffect(() => {
+        if (!customerList && token) {
+            fetchCustomerList()
+        }
+    }, [customerList, fetchCustomerList, token])
+
+    useEffect(() => {
+        if (customerList) {
+            const customerData = customerList.find(obj => {
+                return obj.id === Number(customerId)
+            })
+            setCustomer(customerData)
+        }
+    }, [customerList, customerId])
 
     function updateCustomer(e) {
         e.preventDefault()
