@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { StyledLink } from './StyledLink'
 
 export default function CustomerListItem({customerData}) {
     return (
         <div>
             <h3>
-                <Link to={`/customers/${customerData.id}`}>
+                <StyledLink to={`/customers/${customerData.id}`}>
                     {customerData.name}
-                </Link>
+                </StyledLink>
             </h3>
         </div>
     )

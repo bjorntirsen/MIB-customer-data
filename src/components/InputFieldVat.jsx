@@ -35,7 +35,7 @@ export default function InputFieldVat({setCustomer, customer, value, vatHints, s
                 </td>
             </tr>
             {(vatHints !== "") &&
-                <tr><td colSpan="2">{vatHints}</td></tr>
+                <tr className="bg-warning"><td colSpan="2">{vatHints}</td></tr>
             }
         </>
     )

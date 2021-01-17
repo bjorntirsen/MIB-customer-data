@@ -37,7 +37,7 @@ export default function CustomerDetailPage(props) {
         })
         .then(res => res.json())
         .then(() => fetchCustomerList())
-        .then(() => history.push("/home"))
+        .then(() => history.push("/customers"))
         .catch(err => console.error(err))
     }
 
@@ -88,7 +88,7 @@ export default function CustomerDetailPage(props) {
                     </table>
                     <StyledLink to={`/customers/${customerId}/edit/`} primary="true">Edit Customer</StyledLink>
                     <StyledButton onClick={deleteCustomer}>Delete Customer</StyledButton>
-                    <StyledLink to={"/home"}>Back to List</StyledLink>
+                    <StyledLink to={"/customers"}>Back to List</StyledLink>
                 </>
             ) : (
                 <p>Loading...</p>

@@ -27,7 +27,7 @@ export default function CustomerCreatePage() {
         })
         .then(res => res.json())
         .then(() => fetchCustomerList())
-        .then(() => history.push("/home"))
+        .then(() => history.push("/customers"))
         .catch(err => console.error(err))
     }
 
@@ -101,7 +101,7 @@ export default function CustomerCreatePage() {
                     </tbody>
                 </table>
                 <StyledButton type="submit" primary="true" disabled={disabled} >Create Customer</StyledButton>
-                <StyledLink to={"/home"}>Cancel</StyledLink>
+                <StyledLink to={"/customers"}>Cancel</StyledLink>
             </form>
         </>
     )

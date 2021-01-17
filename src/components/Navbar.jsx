@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { UserContext } from '../contexts/UserContext'
 import { StyledButton } from './StyledButton'
+import logo from '../images/MIB-logo-w40.jpeg'
 
 export default function Navbar() {
     const { userData, setUserData, fetchUserData } = useContext(UserContext)
@@ -21,7 +22,8 @@ export default function Navbar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <span className="navbar-brand">MIB Customer Data</span>
+            <img className="img-fluid h-100 mr-1" src={logo} alt="Logo" />
+            <span className="navbar-brand"><span className="logo-1"> MIB </span> <span className="logo-2"> Customer Data </span></span>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -38,7 +40,7 @@ export default function Navbar() {
                 <div className="form-inline my-2 my-lg-0">
                     {(userData !== null) ? (
                         <>
-                            <span className="text-light">Logged in as: </span>
+                            <span className="text-light">Logged in as:&nbsp;&nbsp;</span>
                             <span className="text-light">
                                 {`"${userData.firstName} 
                                 ${userData.lastName}" ${userData.email} `}

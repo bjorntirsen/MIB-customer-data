@@ -1,3 +1,16 @@
 /* put custom styling here */
+#root {
+    min-height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Satisfy&display=swap');
+
+.logo-1 {
+    font-family: 'Righteous', cursive;
+}
+
+.logo-2 {
+    font-family: 'Satisfy', cursive;
+}
 
 @import 'bootstrap/scss/bootstrap';

@@ -3,7 +3,7 @@ import { CustomerListContext } from '../contexts/CustomerListContext'
 import CustomerListItem from '../components/CustomerListItem'
 import { StyledLink } from '../components/StyledLink'
 
-export default function HomePage() {
+export default function CustomerListPage() {
     const { customerList, fetchCustomerList } = useContext(CustomerListContext)
     const token = localStorage.getItem("WEBB20")
 
@@ -15,8 +15,7 @@ export default function HomePage() {
 
     return (
         <>
-            <h1>MIB Customer Data</h1>
-            <h2>List of Customers:</h2>
+            <h1>List of Customers:</h1>
             {customerList &&
                 <div>
                     {customerList.map(item => {

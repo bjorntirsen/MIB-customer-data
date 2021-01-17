@@ -3,11 +3,12 @@ import { Route, Switch } from 'react-router-dom'
 import { CustomerListContext } from './contexts/CustomerListContext'
 import { UserContext } from './contexts/UserContext'
 import LoginPage from './pages/LoginPage'
-import HomePage from './pages/HomePage'
+import CustomerListPage from './pages/CustomerListPage'
 import CustomerDetailPage from './pages/CustomerDetailPage'
 import CustomerUpdatePage from './pages/CustomerUpdatePage'
 import Navbar from './components/Navbar'
 import CustomerCreatePage from './pages/CustomerCreatePage'
+import Background from './components/Background'
 
 
 function App() {
@@ -51,12 +52,9 @@ function App() {
       <UserContext.Provider value={{userData, setUserData, fetchUserData}} >
         <CustomerListContext.Provider value={{customerList, setCustomerList, fetchCustomerList}} >
           <Navbar />
-          <div className="container-md text-center">
+          <Background />
+          <div className="container-md text-center text-light">
             <Switch>
-              <Route path="/home">
-                <HomePage />
-              </Route>
-
               <Route path="/customers/create">
                 <CustomerCreatePage />
               </Route>
@@ -64,6 +62,10 @@ function App() {
               <Route path="/customers/:id/edit" component={CustomerUpdatePage} />
 
               <Route path="/customers/:id" component={CustomerDetailPage} />
+
+              <Route path="/customers">
+                <CustomerListPage />
+              </Route>
 
               <Route path="/">
                 <LoginPage />

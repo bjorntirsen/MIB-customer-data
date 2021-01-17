@@ -32,7 +32,7 @@ export default function LoginPage() {
         .then(res => res.json())
         .then(data => {
             localStorage.setItem("WEBB20", data.token)
-            if (data.token) history.push("/home")
+            if (data.token) history.push("/customers")
             else window.alert("Invalid email or password. Please try again.")
         })
         .catch(err => console.error(err))
@@ -40,15 +40,18 @@ export default function LoginPage() {
 
     return (
         <>
-            <h1>
-            Welcome to MIB Customer Data! <br/> My assistant In Black
+            <h1 className="">
+                <span>Welcome to <br/></span>
+                <span className="logo-1 display-3"> MIB </span>
+                <span className="logo-2 display-4"> Customer Data </span>! 
             </h1>
+            <blockquote className="font-italic">"We are the best kept secret in the galaxy. We monitor, licence and police all alien activity on the Earth. We're your first, last, and only line of defense. We live in secret, we exist in shadow. And we dress in black."</blockquote>
             <div className="d-flex justify-content-center">
                 <form onSubmit={handleOnSubmit} >
                     <div className="form-group">
                         <label htmlFor="inputEmail">Email address</label>
                         <input type="email" autoComplete="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" name="email" value={formData.email} onChange={handleOnChange} />
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <small id="emailHelp" className="form-textd">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="inputPassword">Password</label>
@@ -59,7 +62,7 @@ export default function LoginPage() {
                             <StyledButtonLarge type="submit" primary>Sign In</StyledButtonLarge>
                         </div>
                         <div className="align-self-end">
-                            <small id="emailHelp" className="form-text text-muted">Don't have an account?</small>
+                            <small id="emailHelp" className="form-text">Don't have an account?</small>
                             <StyledButtonLarge type="button" data-toggle="modal" data-target="#sign-up">
                             Sign Up
                             </StyledButtonLarge>
