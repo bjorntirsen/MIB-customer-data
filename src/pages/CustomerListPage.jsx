@@ -16,7 +16,7 @@ export default function CustomerListPage() {
     return (
         <>
             <h1>List of Customers:</h1>
-            {customerList &&
+            {customerList ? (
                 <div>
                     {customerList.map(item => {
                         return <CustomerListItem 
@@ -25,7 +25,9 @@ export default function CustomerListPage() {
                         />
                     })}
                 </div>
-            }
+            ) : (
+                <p>Loading...</p>
+            )}
             <StyledLink to="/customers/create" primary="true">Create New Customer</StyledLink>
         </>
     )
