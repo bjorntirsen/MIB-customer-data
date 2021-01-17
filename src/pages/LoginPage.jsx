@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { StyledButtonLarge } from '../components/StyledButtonLarge'
+import { StyledButton } from '../components/StyledButton'
 
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
-        email: "Bjorn.Tirsen@yh.nackademin.se",
-        password: "javascriptoramverk"
+        email: "",
+        password: ""
     })
     const history = useHistory()
 
@@ -31,8 +32,10 @@ export default function LoginPage() {
         })
         .then(res => res.json())
         .then(data => {
-            localStorage.setItem("WEBB20", data.token)
-            if (data.token) history.push("/customers")
+            if (data.token) {
+                localStorage.setItem("WEBB20", data.token)
+                history.push("/customers")
+            } 
             else window.alert("Invalid email or password. Please try again.")
         })
         .catch(err => console.error(err))
@@ -70,10 +73,10 @@ export default function LoginPage() {
                     </div>
                 </form>
             </div>
-            {/* Modal. Refactor into component later */}
+            {/* Modal */}
             <div className="modal fade" id="sign-up" tabIndex="-1" aria-labelledby="sign-up-label" aria-hidden="true">
                 <div className="modal-dialog">
-                    <div className="modal-content">
+                    <div className="modal-content bg-dark">
                         <div className="modal-header">
                             <h5 className="modal-title" id="sign-up-label">Create New Account</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -83,7 +86,7 @@ export default function LoginPage() {
                         <div className="modal-body">
                             <p>Sorry. We are too popular.</p>
                             <p>MIB has had an enourmous surge in new customers in the last year. Unfortunately we are not accepting new customers until our server capabilities has caught up with demand.</p>
-                            <button type="button" className="btn btn-secondary m-2" data-dismiss="modal">Close</button>
+                            <StyledButton type="button" className="btn btn-secondary m-2" data-dismiss="modal">Close</StyledButton>
                         </div>
                     </div>
                 </div>

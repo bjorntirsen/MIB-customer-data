@@ -11,7 +11,7 @@ export default function CustomerUpdatePage(props) {
     const token = localStorage.getItem("WEBB20")
     const customerId = props.match.params.id
     const [customer, setCustomer] = useState(null)
-    const [vatHints, setVatHints] = useState("Please enter a valid VAT number above.")
+    const [vatHints, setVatHints] = useState("")
     const [disabled, setDisabled] = useState(true)
     const history = useHistory()
 
