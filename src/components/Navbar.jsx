@@ -21,7 +21,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <img className="img-fluid h-100 mr-1" src={logo} alt="Logo" />
             <span className="navbar-brand"><span className="logo-1"> MIB </span> <span className="logo-2"> Customer Data </span></span>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

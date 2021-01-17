@@ -53,7 +53,7 @@ function App() {
         <CustomerListContext.Provider value={{customerList, setCustomerList, fetchCustomerList}} >
           <Navbar />
           <Background />
-          <div className="container-md text-center text-light">
+          <div className="container-md px-0 text-center text-light pt-5 mt-4">
             <Switch>
               <Route path="/customers/create">
                 <CustomerCreatePage />

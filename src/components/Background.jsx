@@ -4,14 +4,15 @@ import image from '../images/MIB-logo-w730.png'
 
 const Background = styled.div`
     background-image: linear-gradient(to bottom right, black, black, black, blue, black);
-    position: absolute;
+    position: fixed;
     z-index: -1;
-    height: calc(100% - 56px);
+    min-height: calc(100% - 56px);
+    height: 100%;
     width: 100%;
 `;
 
 const BackgroundImage = styled.img`
-    position: absolute;
+    position: fixed;
     max-width: 80%;
     width: 730px;
     bottom: 0;
