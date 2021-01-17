@@ -46,7 +46,7 @@ export default function LoginPage() {
             <h1 className="">
                 <span>Welcome to <br/></span>
                 <span className="logo-1 display-3"> MIB </span>
-                <span className="logo-2 display-4"> Customer Data </span>! 
+                <span className="logo-2 display-4"> Customer Data </span>
             </h1>
             <blockquote className="font-italic">"We are the best kept secret in the galaxy. We monitor, licence and police all alien activity on the Earth. We're your first, last, and only line of defense. We live in secret, we exist in shadow. And we dress in black."</blockquote>
             <div className="d-flex justify-content-center">
