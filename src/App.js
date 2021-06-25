@@ -26,7 +26,7 @@ function App() {
     })
     .then(res => res.json())
     .then(data => {
-      setCustomerList(data.data.customers)
+      setCustomerList(data.results)
     })
     .catch(err => console.error(err))
   }

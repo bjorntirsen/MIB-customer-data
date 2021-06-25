@@ -27,7 +27,7 @@ export default function CustomerDetailPage(props) {
     }, [customerList, customerId])
 
     function deleteCustomer() {
-        const url = `https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
+        const url = `https://mib-api.herokuapp.com/api/v1/customers/${customerId}/`
         fetch(url, {
             method: "DELETE",
             headers: {
