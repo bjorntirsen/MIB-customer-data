@@ -20,7 +20,7 @@ export default function CustomerDetailPage(props) {
     useEffect(() => {
         if (customerList) {
             const customerData = customerList.find(obj => {
-                return obj.id === Number(customerId)
+                return obj._id === Number(customerId)
             })
             setCustomer(customerData)
         }
@@ -42,6 +42,9 @@ export default function CustomerDetailPage(props) {
 
     return (
         <>
+        {console.log(customerList)}
+        {console.log(customerId)}
+        {console.log(customer)}
             <h1>Customer Details:</h1>
             {customer ? (
                 <>

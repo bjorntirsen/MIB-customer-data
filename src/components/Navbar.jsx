@@ -33,17 +33,18 @@ export default function Navbar() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/">Home</Link>
                     </li>
+                    {(userData !== null) ?? (
                     <li className="nav-item">
                         <Link className="nav-link" to="/customers">Customer List</Link>
                     </li>
+                    )}
                 </ul>
                 <div className="form-inline my-2 my-lg-0">
                     {(userData !== null) ? (
                         <>
                             <span className="text-light">Logged in as:&nbsp;&nbsp;</span>
                             <span className="text-light">
-                                {`"${userData.firstName} 
-                                ${userData.lastName}" ${userData.email} `}
+                                {`"${userData.name}" ${userData.email} `}
                             </span>
                             <StyledButton onClick={logOut}>Log Out</StyledButton>
                         </>

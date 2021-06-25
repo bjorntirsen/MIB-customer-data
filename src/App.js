@@ -16,7 +16,7 @@ function App() {
   const [customerList, setCustomerList] = useState(null)
 
   function fetchCustomerList() {
-    const url = "https://frebi.willandskill.eu/api/v1/customers/"
+    const url = "https://mib-api.herokuapp.com/api/v1/customers"
     const token = localStorage.getItem("WEBB20")
     fetch(url, {
       headers: {
@@ -26,13 +26,13 @@ function App() {
     })
     .then(res => res.json())
     .then(data => {
-      setCustomerList(data.results)
+      setCustomerList(data.data.customers)
     })
     .catch(err => console.error(err))
   }
 
   function fetchUserData() {
-    const url = "https://frebi.willandskill.eu/api/v1/me/"
+    const url = "https://mib-api.herokuapp.com/api/v1/users/getMe"
     const token = localStorage.getItem("WEBB20")
     fetch(url, {
       headers: {
@@ -42,7 +42,7 @@ function App() {
     })
     .then(res => res.json())
     .then(data => {
-      if (data.id) setUserData(data)
+      if (data.data.user._id) setUserData(data.data.user)
     })
     .catch(err => console.error(err))
   }

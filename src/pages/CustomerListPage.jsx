@@ -20,7 +20,7 @@ export default function CustomerListPage() {
                 <div>
                     {customerList.map(item => {
                         return <CustomerListItem 
-                            key={item.id} 
+                            key={item._id} 
                             customerData={item} 
                         />
                     })}
