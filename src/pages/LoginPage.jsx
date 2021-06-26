@@ -33,7 +33,7 @@ export default function LoginPage() {
         .then(res => res.json())
         .then(data => {
             if (data.token) {
-                localStorage.setItem("WEBB20", data.token)
+                localStorage.setItem("MIB", data.token)
                 history.push("/customers")
             } 
             else window.alert("Invalid email or password. Please try again.")

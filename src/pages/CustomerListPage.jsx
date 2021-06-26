@@ -5,7 +5,7 @@ import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerListPage() {
     const { customerList, fetchCustomerList } = useContext(CustomerListContext)
-    const token = localStorage.getItem("WEBB20")
+    const token = localStorage.getItem("MIB")
 
     useEffect(() => {
         if (!customerList && (token !== null)) {
@@ -15,6 +15,7 @@ export default function CustomerListPage() {
 
     return (
         <>
+        
             <h1>List of Customers:</h1>
             {customerList ? (
                 <div>

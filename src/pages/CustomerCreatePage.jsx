@@ -21,8 +21,8 @@ export default function CustomerCreatePage() {
 
     function createCustomer(e) {
         e.preventDefault()
-        const url = "https://frebi.willandskill.eu/api/v1/customers/"
-        const token = localStorage.getItem("WEBB20")
+        const url = "https://mib-api.herokuapp.com/api/v1/customers/"
+        const token = localStorage.getItem("MIB")
         fetch(url, {
             method: "POST",
             body: JSON.stringify(customerData),

@@ -9,7 +9,7 @@ import InputFieldPayterm from '../components/InputFieldPayterm'
 
 export default function CustomerUpdatePage(props) {
     const { customerList, fetchCustomerList } = useContext(CustomerListContext)
-    const token = localStorage.getItem("WEBB20")
+    const token = localStorage.getItem("MIB")
     const customerId = props.match.params.id
     const [customer, setCustomer] = useState(null)
     const [vatHints, setVatHints] = useState("")
@@ -30,7 +30,7 @@ export default function CustomerUpdatePage(props) {
     useEffect(() => {
         if (customerList) {
             const customerData = customerList.find(obj => {
-                return obj.id === Number(customerId)
+                return obj._id === customerId
             })
             setCustomer(customerData)
         }
@@ -38,10 +38,10 @@ export default function CustomerUpdatePage(props) {
 
     function updateCustomer(e) {
         e.preventDefault()
-        const url = `https://frebi.willandskill.eu/api/v1/customers/${customerId}/`
-        const token = localStorage.getItem("WEBB20")
+        const url = `https://mib-api.herokuapp.com/api/v1/customers/${customerId}/`
+        const token = localStorage.getItem("MIB")
         fetch(url, {
-            method: "PUT",
+            method: "PATCH",
             body: JSON.stringify(customer),
             headers: {
                 "Content-Type": "application/json",

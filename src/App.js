@@ -17,7 +17,7 @@ function App() {
 
   function fetchCustomerList() {
     const url = "https://mib-api.herokuapp.com/api/v1/customers"
-    const token = localStorage.getItem("WEBB20")
+    const token = localStorage.getItem("MIB")
     fetch(url, {
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ function App() {
 
   function fetchUserData() {
     const url = "https://mib-api.herokuapp.com/api/v1/users/getMe"
-    const token = localStorage.getItem("WEBB20")
+    const token = localStorage.getItem("MIB")
     fetch(url, {
       headers: {
         "Content-Type": "application/json",

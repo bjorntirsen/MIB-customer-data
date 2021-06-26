@@ -6,7 +6,7 @@ import { StyledLink } from '../components/StyledLink'
 
 export default function CustomerDetailPage(props) {
     const { customerList, fetchCustomerList } = useContext(CustomerListContext)
-    const token = localStorage.getItem("WEBB20")
+    const token = localStorage.getItem("MIB")
     const customerId = props.match.params.id
     const [customer, setCustomer] = useState(null)
     const history = useHistory()
@@ -20,11 +20,11 @@ export default function CustomerDetailPage(props) {
     useEffect(() => {
         if (customerList) {
             const customerData = customerList.find(obj => {
-                return obj._id === Number(customerId)
+                return obj._id === customerId
             })
             setCustomer(customerData)
         }
-    }, [customerList, customerId])
+    }, [customerList, customerId, customer])
 
     function deleteCustomer() {
         const url = `https://mib-api.herokuapp.com/api/v1/customers/${customerId}/`
@@ -42,9 +42,7 @@ export default function CustomerDetailPage(props) {
 
     return (
         <>
-        {console.log(customerList)}
-        {console.log(customerId)}
-        {console.log(customer)}
+        
             <h1>Customer Details:</h1>
             {customer ? (
                 <>

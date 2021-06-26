@@ -9,13 +9,13 @@ export default function Navbar() {
     const history = useHistory()
 
     useEffect(() => {
-        if (!userData && (localStorage.getItem("WEBB20") !== null)) {
+        if (!userData && (localStorage.getItem("MIB") !== null)) {
             fetchUserData()
         }
     }, [userData, fetchUserData])
 
     function logOut() {
-        localStorage.removeItem('WEBB20')
+        localStorage.removeItem('MIB')
         setUserData(null)
         history.push("/")
     }
@@ -33,11 +33,9 @@ export default function Navbar() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/">Home</Link>
                     </li>
-                    {(userData !== null) ?? (
                     <li className="nav-item">
                         <Link className="nav-link" to="/customers">Customer List</Link>
                     </li>
-                    )}
                 </ul>
                 <div className="form-inline my-2 my-lg-0">
                     {(userData !== null) ? (
