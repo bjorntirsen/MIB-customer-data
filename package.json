@@ -1,5 +1,5 @@
 {
-  "name": "MIB-customer-data",
+  "name": "mib-customer-data",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
