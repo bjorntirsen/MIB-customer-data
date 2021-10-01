@@ -6,7 +6,7 @@ export default function CustomerListItem({customerData}) {
         <div>
             <h3>
                 <StyledLink to={`/customers/${customerData._id}`}>
-                    {customerData.name}
+                    {customerData.title}
                 </StyledLink>
             </h3>
         </div>

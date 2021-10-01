@@ -15,9 +15,8 @@ export default function CustomerListPage() {
 
     return (
         <>
-        
             <h1>List of Customers:</h1>
-            {customerList !== null && customerList.lenght > 0 ? (
+            {customerList !== null ? (
                 <div>
                     {customerList.map(item => {
                         return <CustomerListItem 
