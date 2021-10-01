@@ -16,7 +16,7 @@ function App() {
   const [customerList, setCustomerList] = useState(null)
 
   function fetchCustomerList() {
-    const url = "https://mib-api.herokuapp.com/api/v1/customers"
+    const url = "http://localhost:3000/api/lists"
     const token = localStorage.getItem("MIB")
     fetch(url, {
       headers: {
@@ -26,13 +26,14 @@ function App() {
     })
     .then(res => res.json())
     .then(data => {
-      setCustomerList(data.results)
+      setCustomerList(data.data.lists)
+      console.log(data.data.lists)
     })
     .catch(err => console.error(err))
   }
 
   function fetchUserData() {
-    const url = "https://mib-api.herokuapp.com/api/v1/users/getMe"
+    const url = "http://localhost:3000/api/users/getMe"
     const token = localStorage.getItem("MIB")
     fetch(url, {
       headers: {

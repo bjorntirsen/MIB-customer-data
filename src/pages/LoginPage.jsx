@@ -18,7 +18,7 @@ export default function LoginPage() {
 
     function handleOnSubmit(e) {
         e.preventDefault()
-        const url = "https://mib-api.herokuapp.com/api/v1/users/login"
+        const url = "http://localhost:3000/api/users/login"
         const payload = {
             email: formData.email,
             password: formData.password
