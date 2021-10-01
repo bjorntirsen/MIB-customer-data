@@ -50,39 +50,21 @@ export default function CustomerDetailPage(props) {
                         <thead>
                             <tr>
                                 <td>Name: </td>
-                                <td>{customer.name}</td>
+                                <td>{customer.title}</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Org. nr: </td>
-                                <td>{customer.organisationNr}</td>
+                                <td>Body: </td>
+                                <td>{customer.body}</td>
                             </tr>
                             <tr>
-                                <td>Payterm: </td>
-                                <td>{customer.paymentTerm}</td>
+                                <td>createdAt: </td>
+                                <td>{customer.createdAt}</td>
                             </tr>
                             <tr>
-                                <td>Phone: </td>
-                                <td>{customer.phoneNumber}</td>
-                            </tr>
-                            <tr>
-                                <td>Ref: </td>
-                                <td>{customer.reference}</td>
-                            </tr>
-                            <tr>
-                                <td>VAT: </td>
-                                <td>{customer.vatNr}</td>
-                            </tr>
-                            <tr>
-                                <td>Email: </td>
-                                <td><a href={`mailto:${customer.email}`}>{customer.email}</a></td>
-                            </tr>
-                            <tr>
-                                <td>Website: </td>
-                                <td>
-                                    <a href={customer.website} target="_blank" rel="noreferrer">{customer.website}</a>
-                                </td>
+                                <td>lastModifiedAt: </td>
+                                <td>{customer.lastModifiedAt}</td>
                             </tr>
                         </tbody>
                     </table>
