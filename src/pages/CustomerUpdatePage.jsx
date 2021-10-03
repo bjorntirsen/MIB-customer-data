@@ -1,19 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import InputField from '../components/InputField';
-import InputFieldVat from '../components/InputFieldVat';
 import { CustomerListContext } from '../contexts/CustomerListContext';
 import { StyledButton } from '../components/StyledButton';
 import { StyledLink } from '../components/StyledLink';
-import InputFieldPayterm from '../components/InputFieldPayterm';
 
 export default function CustomerUpdatePage(props) {
   const { customerList, fetchCustomerList } = useContext(CustomerListContext);
   const token = localStorage.getItem('MIB');
   const customerId = props.match.params.id;
   const [customer, setCustomer] = useState(null);
-  const [vatHints, setVatHints] = useState('');
-  const [disabled, setDisabled] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
@@ -21,11 +17,6 @@ export default function CustomerUpdatePage(props) {
       fetchCustomerList();
     }
   }, [customerList, fetchCustomerList, token]);
-
-  useEffect(() => {
-    if (vatHints === '') setDisabled(false);
-    else setDisabled(true);
-  }, [vatHints]);
 
   useEffect(() => {
     if (customerList) {
@@ -38,7 +29,7 @@ export default function CustomerUpdatePage(props) {
 
   function updateCustomer(e) {
     e.preventDefault();
-    const url = `https://mib-api.herokuapp.com/api/v1/customers/${customerId}/`;
+    const url = `http://localhost:3000/api/lists/${customerId}`;
     const token = localStorage.getItem('MIB');
     fetch(url, {
       method: 'PATCH',

@@ -27,7 +27,7 @@ export default function CustomerDetailPage(props) {
     }, [customerList, customerId, customer])
 
     function deleteCustomer() {
-        const url = `https://mib-api.herokuapp.com/api/v1/customers/${customerId}/`
+        const url = `http://localhost:3000/api/lists/${customerId}`
         fetch(url, {
             method: "DELETE",
             headers: {
